@@ -145,6 +145,53 @@
         context.drawImage(image, 0, 0, 60, 50, -30, -25, 60, 50);
         context.rotate(-3 * Math.PI / 4); 
         context.translate(-300, -370);
+
+        // Create new Audio obj
+        //let sound = new Audio();
+        
+        // Select the source of the sound
+        //sound.src = "music.ogg";
+        // Will only work on browsers supporting ogg
+
+        // Play the sound 
+        // sound.play();
+        // uncomment to play music
+
+        let audio = document.createElement("audio")
+        let mp3Support, oggSupport;
+
+        if (audio.canPlayType) {
+          // Currently canPlayType() returns: "", "maybe", or "probably"
+          mp3Support = "" !== audio.canPlayType("audio/mpeg");
+          oggSupport = "" !== audio.canPlayType("audio/ogg; codecs=\"vorbis\"");
+        } else {
+          // The audio tag is not supported
+          mp3Support = false;
+          oggSupport = false;
+        }
+
+        // Check for ogg , then mp3, and finally set soundFileExtn to undefined
+        let soundFileExtn = oggSupport ? ".ogg" : mp3Support ? ".mp3" : undefined;
+
+        if (soundFileExtn) {
+          let sound = new Audio();
+          // Load sound file with detected extension
+
+          sound.src = "music" + soundFileExtn;
+          sound.play();
+        }
+
+        // Play the sound after waiting for it to load
+        if (soundFileExtn) {
+          let sound = new Audio();
+
+          sound.addEventListener("canPlayThrough", function() {
+            sound.play();
+          });
+           
+          // Load sound file with the detected extention
+          sound.src = "music" + soundFileExtn;
+        }
       }
     </script>
   </head>
@@ -154,10 +201,10 @@
     </canvas>
     <img src="fire.png" id="fire">
     <img src="spaceship.png" id="spaceship">
-    <audio controls="controls">
+    <!-- <audio controls="controls">
       <source src="music.ogg" type="audio/ogg" />
       <source src="music.mp3" type="audio/mpeg" />
       Your browser does not support HTML5 Audio. Please shift to a newer browser.
-    </audio>
+    </audio> -->
   </body>
 </html>
