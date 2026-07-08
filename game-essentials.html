@@ -116,6 +116,35 @@
         context.fillStyle = pattern;
         // Pattern filled rectangle
         context.fillRect(420, 240, 130, 50);
+
+        // Drawing Images
+        // Get a handle to the image object
+        let image = document.getElementById("spaceship");
+
+        // Image at (0, 350)
+        context.drawImage(image, 0, 350);
+
+        // Scale the image to half the original size
+        context.drawImage(image, 0, 400, 100, 25);
+
+        // Draw part of the image
+        context.drawImage(image, 0, 0, 60, 50, 0, 420, 60, 50);
+
+        // Rotaion and Translation
+        // Translate orgin to location of object
+        context.translate(250, 370);
+        // Rotate about the new orgin by 60 degrees
+        context.rotate(Math.PI / 3);
+        context.drawImage(image, 0, 0, 60, 50, -30, -25, 60, 50);
+        // Restore to original state by rotating and translating back
+        context.rotate(-Math.PI / 3);
+        context.translate(-240, -370);
+
+        context.translate(300, 370);
+        context.rotate(3 * Math.PI / 4);
+        context.drawImage(image, 0, 0, 60, 50, -30, -25, 60, 50);
+        context.rotate(-3 * Math.PI / 4); 
+        context.translate(-300, -370);
       }
     </script>
   </head>
@@ -124,5 +153,11 @@
       Your browser does not support HTML5 Canvas. Please shift to a newer browser.
     </canvas>
     <img src="fire.png" id="fire">
+    <img src="spaceship.png" id="spaceship">
+    <audio controls="controls">
+      <source src="music.ogg" type="audio/ogg" />
+      <source src="music.mp3" type="audio/mpeg" />
+      Your browser does not support HTML5 Audio. Please shift to a newer browser.
+    </audio>
   </body>
 </html>
