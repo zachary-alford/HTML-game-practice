@@ -147,14 +147,14 @@
         context.translate(-300, -370);
 
         // Create new Audio obj
-        //let sound = new Audio();
+        let sound = new Audio();
         
         // Select the source of the sound
-        //sound.src = "music.ogg";
+        sound.src = "music.ogg";
         // Will only work on browsers supporting ogg
 
         // Play the sound 
-        // sound.play();
+        sound.play();
         // uncomment to play music
 
         let audio = document.createElement("audio")
@@ -191,7 +191,7 @@
            
           // Load sound file with the detected extention
           sound.src = "music" + soundFileExtn;
-        }
+        } 
       }
     </script>
   </head>
