@@ -59,3 +59,18 @@ body {
   /* Remove the default blue border when an input is selected */
   outline: 0;
 }
+
+/* Loading screen */
+
+#loadingscreen {
+  background: rgba(100, 100, 100, 0.5);
+}
+
+#loadingmessage {
+  margin-top: 400px;
+  text-align: center;
+  height: 48px;
+  color: white;
+  background: url("images/loader.gif") no-repeat center;
+  font: 12px Arial;
+}
